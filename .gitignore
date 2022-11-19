@@ -1,0 +1,10 @@
+.idea
+.DS_Store
+target
+gen
+*.interp
+*.tokens
+TipLexer.java
+TipParser.java
+TipParserBaseVisitor.java
+TipParserVisitor.java

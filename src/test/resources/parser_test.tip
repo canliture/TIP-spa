@@ -1,0 +1,96 @@
+intro() {
+    while (n > 1) {
+        if (n % 2 == 0) { // if n is even, divide it by two
+            n = n / 2;
+        } else { // if n is odd, multiply by three and add one
+            n = 3 * n + 1;
+        }
+    }
+
+    x = input; y = input; z = input;
+    output x*x*x + y*y*y + z*z*z == 42;
+
+    return 0;
+}
+
+// ----------------- 2.1 The Syntax of TIP
+
+twice(f, x) {
+    return f(f(x));
+}
+
+inc(y) {
+    return y+1;
+}
+
+main(z) {
+    return twice(inc, z);
+}
+
+pointer() {
+    x = alloc null;
+    y = &x;
+    *x = 42;
+    z = **y;
+
+    return 0;
+}
+
+record() {
+    x = {f: 1, g: 2};
+    y = x.f;
+
+    x = {f: 1, g: 2};
+    y = &x;
+    x.f = 3;
+    (*y).g = 4;
+
+    return 0;
+}
+
+// ----------------- 2.2 Example Programs
+
+iterate(n) {
+    var f;
+    f = 1;
+    while (n>0) {
+        f = f*n;
+        n = n-1;
+    }
+    return f;
+}
+
+recurse(n) {
+    var f;
+    if (n==0) { f=1; }
+    else { f=n*recurse(n-1); }
+    return f;
+}
+
+foo(p,x) {
+    var f,q;
+    if (*p==0) { f=1; }
+    else {
+        q = alloc 0;
+        *q = (*p)-1;
+        f=(*p)*(x(q,x));
+    }
+    return f;
+}
+
+main() {
+    var n;
+    n = input;
+    return foo(&n,foo);
+}
+
+// ----------------- 2.3 Normalization
+normalization() {
+    x = f(y+3)*5;
+
+    t1 = y+3;
+    t2 = f(t1);
+    x = t2*5;
+
+    return 0;
+}
