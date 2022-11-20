@@ -35,7 +35,8 @@ expr
     | ID
     | INPUT
     | NULL
-    | expr bop=('+' | '-' | '*' | '/' | '%') expr
+    | expr bop=('*' | '/' | '%') expr
+    | expr bop=('+' | '-') expr
     | expr bop=('>' | '==') expr
     | parenExpr
     | callExpr
